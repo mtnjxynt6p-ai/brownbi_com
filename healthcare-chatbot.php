@@ -90,6 +90,11 @@
             background: #5568d3;
         }
 
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
         .answer-section {
             flex: 1;
             overflow-y: auto;
@@ -257,7 +262,13 @@
 
             render() {
                 const root = document.getElementById('root');
-                
+                // Get name from querystring
+                const urlParams = new URLSearchParams(window.location.search);
+                const nameFromQuery = urlParams.get('name') || '';
+                const placeholderText = nameFromQuery
+                    ? `What would you like to know ${nameFromQuery} ?`
+                    : 'What would you like to know?';
+
                 root.innerHTML = `
                     <div class="rag-component">
                         <div class="rag-header">
@@ -271,7 +282,7 @@
                                     type="text"
                                     class="query-input"
                                     value="${this.query}"
-                                    placeholder="What would you like to know?"
+                                    placeholder="${placeholderText}"
                                     ${this.loading ? 'disabled' : ''}
                                 />
                                 <button 
@@ -309,6 +320,12 @@
                                 <span>Thinking...</span>
                             </div>
                         ` : ''}
+                        <div style="width:100%;text-align:center;margin-top:32px;padding:16px;">
+                            <a href="https://brownbi.com" style="display:inline-block;text-decoration:none;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                <img src="./images/bbiLogoLite.svg" alt="BBI Logo - Return Home" style="height:48px;opacity:0.8;transition:opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'" />
+                            </a>
+                            <p style="font-size:11px;color:#666;margin-top:8px;">Visit brownbi.com</p>
+                        </div>
                     </div>
                 `;
                 

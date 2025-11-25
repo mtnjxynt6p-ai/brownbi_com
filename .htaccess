@@ -12,4 +12,5 @@ RewriteRule .* - [E=UPGRADE]
         Header always set Content-Security-Policy "upgrade-insecure-requests;" env=UPGRADE
     </IfModule>
 </IfModule>
+RewriteRule ^healthcare-chatbot$ healthcare-chatbot.php [L]
 DirectoryIndex index.php

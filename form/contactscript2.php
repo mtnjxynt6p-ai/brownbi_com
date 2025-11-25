@@ -86,6 +86,19 @@ if (FALSE) {
 
 }
 
+// Enhanced spam protection - check immediately
+if (!empty($_POST['company_name'])) {
+    die('Spam detected: honeypot field filled');
+}
+
+if (empty($_POST['human_check']) || $_POST['human_check'] !== '1') {
+    die('Bot detected: human verification failed');
+}
+
+if (!empty($_POST['moat'])) {
+    die('Spam detected: moat field filled');
+}
+
 
 
 
@@ -107,13 +120,6 @@ $body .= "Reply directly to: $email\n";
 $headers = "From: BrownBI Contact Form <info@brownbi.com>\r\nReply-To: $email\r\nContent-Type: text/plain; charset=utf-8\r\n";
 $mail_result = mail($to, $subject, $body, $headers, "-finfo@brownbi.com");
 file_put_contents($logfile, date('Y-m-d H:i:s') . " | To: $to | Result: " . ($mail_result ? "SUCCESS" : "FAIL") . " | Subject: $subject | From: info@brownbi.com | Name: $name\n", FILE_APPEND);
-
-// Send confirmation to sender (using mail())
-$confirm_subject = "Thank you for contacting BrownBI";
-$confirm_message = "Hi $name,\n\nThank you for reaching out to Brown Business Intelligence. We have received your message and will get back to you soon.\n\nBest regards,\nBrownBI Team";
-$confirm_headers = "From: info@brownbi.com\r\nReply-To: info@brownbi.com\r\nContent-Type: text/plain; charset=iso-8859-1\r\nX-Priority: 1 (Highest)\r\nX-MSMail-Priority: High\r\nImportance: High\r\n";
-$confirm_mail_result = mail($email, $confirm_subject, $confirm_message, $confirm_headers, "-finfo@brownbi.com");
-file_put_contents($logfile, date('Y-m-d H:i:s') . " | To: $email | Result: " . ($confirm_mail_result ? "SUCCESS" : "FAIL") . " | Subject: $confirm_subject | From: info@brownbi.com\n", FILE_APPEND);
 
 // REDIRECT TO THE THANKS PAGE
 header("location: thanks.php");

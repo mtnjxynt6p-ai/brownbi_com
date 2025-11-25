@@ -226,7 +226,7 @@ header("Expires: 0");
                     Business Artificial Intelligence</h2>
               <p>Business Intelligence (BI) comprises the strategies and technologies used by enterprises for the data analysis of business information.<br>
                 <br>
-                Artificial Intelligence (AI) is intelligence demonstrated by machines, unlike the natural intelligence displayed
+                Artificial Intelligence (AI) is intelligence demonstrated by machines, unlike the natural intelligence displayed by humans and animals, which involves consciousness and emotionality. </p>
               <p>We are a licensed, insured development shop serving clients in Charlotte North Carolina, and the world.&nbsp; We specialize in generative, and agentic AI using Low Code/No Code environments for prototyping and AWS/Azure to deploy production systems.&nbsp; All employees are US Citizens.&nbsp;🇺🇸 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
 <p>&nbsp;</p>
               <p class="text-center">
@@ -275,14 +275,11 @@ header("Expires: 0");
 <h2 style="margin-top:80px;">Live Real-Time Analysis (MIMIC-III de-identified notes)</h2>
 <p>Paste any de-identified discharge summary. Watch NoteRisk™ flag risks instantly.</p>
 
-<div style="background-color: rgba(240, 237, 235, 0.75); border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); padding:25px; margin-bottom: 10px;">
+<div style="background:#f8f9fa;padding:25px;border-radius:12px;border:1px solid #e0e0e0;">
   <textarea id="patientNote" placeholder="Paste de-identified discharge summary here..." style="width:100%;height:200px;font-family:monospace;font-size:14px;padding:12px;border:1px solid #ccc;border-radius:8px;"></textarea>
   
   <button onclick="runAnalysis()" style="margin-top:15px;padding:14px 32px;background:#005EB8;color:white;border:none;border-radius:8px;font-weight:bold;font-size:16px;cursor:pointer;">
     🔬 Run NoteRisk™ Analysis
-  </button>
-  <button onclick="loadSampleNote()" style="margin-top:15px;margin-left:10px;padding:14px 24px;background:#28a745;color:white;border:none;border-radius:8px;font-weight:bold;font-size:14px;cursor:pointer;">
-    📄 Sample Note
   </button>
   <p style="margin-top:10px;color:#666;font-size:14px;">Powered by AWS Bedrock • Real-time • No data stored</p>
 </div>
@@ -292,7 +289,7 @@ header("Expires: 0");
   <div id="flags"></div>
   <hr>
   <p><strong>Pilot Value:</strong> Your hospital could catch these before discharge. $5,000 • 4 weeks • Full refund if no value.</p>
-  <a href="#shockUs" style="background:#005EB8;color:white;padding:12px 24px;text-decoration:none;border-radius:8px;font-weight:bold;">Book $5k Pilot →</a>
+  <a href="https://brownbi.com/contact-pilot" style="background:#005EB8;color:white;padding:12px 24px;text-decoration:none;border-radius:8px;font-weight:bold;">Book $5k Pilot →</a>
 </div>
 
 <script>
@@ -306,7 +303,7 @@ async function runAnalysis() {
   document.getElementById("analysisResult").style.display = "block";
   document.getElementById("flags").innerHTML = "<p>Analyzing with AWS Bedrock...</p>";
 
-  const response = await fetch('api/bedrock.php', {
+  const response = await fetch('https://brownbi.com/api/bedrock.php', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ 
@@ -329,10 +326,6 @@ async function runAnalysis() {
   } catch (e) {
     document.getElementById("flags").innerHTML = `<p><strong>Raw response:</strong> ${text}</p>`;
   }
-}
-
-function loadSampleNote() {
-  document.getElementById("patientNote").value = 'Patient is a 65-year-old male with history of diabetes and hypertension. Admitted with shortness of breath and fever. Labs show elevated WBC, creatinine 2.1. Chest X-ray shows bilateral infiltrates. Started on IV antibiotics for pneumonia. Discharged with oral antibiotics and follow-up in 1 week.';
 }
 </script>
 	</div>
@@ -464,16 +457,6 @@ function loadSampleNote() {
                     <span id="messageHelp" class="form-text" style="display: none;">Please enter a message.</span>
                     <small class="form-text text-muted" style="display: block; margin-top: 5px;">Minimum 10 characters</small>
                   </div>
-                  
-                  <!-- Modern Honeypot (realistic field name) -->
-                  <div style="position: absolute; left: -9999px; opacity: 0;">
-                    <label for="company_name_hp">Company Name</label>
-                    <input type="text" name="company_name" id="company_name_hp" autocomplete="off" tabindex="-1">
-                  </div>
-                  
-                  <!-- Hidden Checkbox Anti-Bot -->
-                  <input type="checkbox" name="human_check" value="1" style="position:absolute; left:-9999px;" checked>
-                  
                   <button type="submit" id="feedbackSubmit" class="btn btn-primary btn-sm">
                     <span id="submitText">Send Message</span>
                     <span id="submitSpinner" style="display: none;">
