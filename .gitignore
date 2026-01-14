@@ -25,3 +25,55 @@ dist-ssr
 
 api/bedrock.php
 send_emails.py
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# Environment variables
+.env
+.env.local
+*.env
+
+# Vector databases
+chroma_db/
+*.sqlite3
+
+# WordPress
+wordpress_blog.sql
+wordpress_blog.sql.zip
+
+# Sensitive files
+php.ini
+.user.ini
+web.config
+
+# Dreamweaver notes
+_notes/
+*/_notes/
+
+# Backups
+.easyssl_backup/
+
+# Test coverage
+.coverage
+htmlcov/
+*.cover
+.pytest_cache/
+
+# IDEs
+*.swp
+*.swo
+*~
+
+# Certificates and sensitive docs
+*.pdf
