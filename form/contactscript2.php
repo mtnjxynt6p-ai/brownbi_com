@@ -4,6 +4,8 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+session_start();
+
 // VALUES FROM THE FORM
 if (!isset($_POST['name']) || !isset($_POST['email']) || !isset($_POST['msg'])) {
     print "Error: Form data not received.";
@@ -15,6 +17,11 @@ $email     = $_POST['email'];
 $message   = $_POST['msg'];
 $fromemail  = "info@brownbi.com";
 
+// Block specific spammer by name (case-insensitive, partial match)
+if (preg_match('/robertced/i', $name)) {
+    header("Location: thanks.php");
+    exit;
+}
 
 // ERROR & SECURITY CHECKS
 
@@ -99,8 +106,16 @@ if (!empty($_POST['moat'])) {
     die('Spam detected: moat field filled');
 }
 
+// Math CAPTCHA validation
+if (!isset($_POST['captcha']) || !isset($_SESSION['captcha_answer']) || intval($_POST['captcha']) !== intval($_SESSION['captcha_answer'])) {
+    print "Error: Incorrect answer to the math question.";
+    exit;
+}
+unset($_SESSION['captcha_answer']);
 
-
+// Log IP address (optional, for further blocking)
+$ip = $_SERVER['REMOTE_ADDR'];
+file_put_contents(__DIR__ . '/spam_log.txt', date('Y-m-d H:i:s') . " | IP: $ip | Name: $name | Email: $email\n", FILE_APPEND);
 
 
 // CREATE THE EMAIL (using GoDaddy relay server, no authentication)
