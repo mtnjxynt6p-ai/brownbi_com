@@ -90,6 +90,11 @@
             background: #5568d3;
         }
 
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
         .answer-section {
             flex: 1;
             overflow-y: auto;

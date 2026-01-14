@@ -4,6 +4,7 @@ header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 header("Expires: 0");
+session_start(); // <-- Add this to enable PHP session for CAPTCHA
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -465,10 +466,16 @@ function loadSampleNote() {
                     <small class="form-text text-muted" style="display: block; margin-top: 5px;">Minimum 10 characters</small>
                   </div>
                   
-                  <!-- Modern Honeypot (realistic field name) -->
-                  <div style="position: absolute; left: -9999px; opacity: 0;">
-                    <label for="company_name_hp">Company Name</label>
-                    <input type="text" name="company_name" id="company_name_hp" autocomplete="off" tabindex="-1">
+                  <!-- Math CAPTCHA -->
+                  <?php
+                    $a = rand(1, 9);
+                    $b = rand(1, 9);
+                    $_SESSION['captcha_answer'] = $a + $b;
+                  ?>
+                  <div class="form-group">
+                    <label for="captcha">What is <?php echo $a; ?> + <?php echo $b; ?>? <span class="text-danger">*</span></label>
+                    <input type="text" name="captcha" id="captcha" class="form-control" required autocomplete="off" maxlength="2" pattern="\d+">
+                    <span id="captchaHelp" class="form-text" style="display: none;">Please answer the math question.</span>
                   </div>
                   
                   <!-- Hidden Checkbox Anti-Bot -->
