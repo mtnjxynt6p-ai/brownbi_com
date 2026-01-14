@@ -6,6 +6,8 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+mail_log.txt
+spam_log.txt
 
 node_modules
 dist
@@ -51,15 +53,18 @@ chroma_db/
 # WordPress
 wordpress_blog.sql
 wordpress_blog.sql.zip
+blog/
 
 # Sensitive files
 php.ini
 .user.ini
 web.config
+webformmailer.php
 
 # Dreamweaver notes
 _notes/
 */_notes/
+dwsync.xml
 
 # Backups
 .easyssl_backup/
@@ -77,3 +82,10 @@ htmlcov/
 
 # Certificates and sensitive docs
 *.pdf
+
+# Build outputs
+public/
+Users/
+
+# Templates and backups
+origBootStrapTemplate.html
