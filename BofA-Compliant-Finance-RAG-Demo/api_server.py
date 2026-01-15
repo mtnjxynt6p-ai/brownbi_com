@@ -22,12 +22,7 @@ app = FastAPI(
 # Enable CORS for brownbi.com
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "https://brownbi.com",
-        "http://brownbi.com",
-        "http://localhost",
-        "http://localhost:8000"
-    ],
+    allow_origins=["*"],  # Allow all origins for local testing
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

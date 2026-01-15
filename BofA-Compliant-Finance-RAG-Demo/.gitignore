@@ -6,6 +6,7 @@ __pycache__/
 .Python
 env/
 venv/
+bofa-rag/
 ENV/
 *.egg-info/
 dist/

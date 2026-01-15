@@ -9,9 +9,9 @@ echo "=========================================="
 echo ""
 
 # Check if virtual environment exists
-if [ ! -d "venv" ]; then
+if [ ! -d "bofa-rag" ]; then
     echo "📦 Creating virtual environment..."
-    python3 -m venv venv
+    python3 -m venv bofa-rag
     echo "✅ Virtual environment created"
 else
     echo "✅ Virtual environment found"
@@ -19,10 +19,10 @@ fi
 
 # Activate virtual environment
 echo "🔧 Activating virtual environment..."
-source venv/bin/activate
+source bofa-rag/bin/activate
 
 # Check if dependencies are installed
-if [ ! -f "venv/lib/python*/site-packages/langchain/__init__.py" ]; then
+if [ ! -f "bofa-rag/lib/python*/site-packages/langchain/__init__.py" ]; then
     echo "📦 Installing dependencies (this may take a few minutes)..."
     pip install -q --upgrade pip
     pip install -q -r requirements.txt

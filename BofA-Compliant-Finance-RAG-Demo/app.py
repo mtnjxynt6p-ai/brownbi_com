@@ -10,18 +10,19 @@ Demonstrates responsible AI practices for GenAI Engineering:
 
 import os
 import json
+import uuid
 from typing import List, Dict, Any
 from dotenv import load_dotenv
 
 # LangChain imports
 from langchain_community.vectorstores import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_aws import ChatBedrock
-from langchain.prompts import ChatPromptTemplate
-from langchain.schema.runnable import RunnablePassthrough
-from langchain.schema.output_parser import StrOutputParser
-from langchain.callbacks.tracers.langchain import LangChainTracer
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.runnables import RunnablePassthrough
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.tracers.langchain import LangChainTracer
 
 # Guardrails
 from llm_guard.input_scanners import PromptInjection, Toxicity, BanTopics
@@ -29,7 +30,8 @@ from llm_guard.output_scanners import Sensitive, NoRefusal, Relevance
 from llm_guard.vault import Vault
 
 # Observability
-from langfuse.callback import CallbackHandler
+from langfuse import Langfuse
+from langfuse.langchain import CallbackHandler
 
 # Evaluation
 from deepeval.metrics import (
@@ -49,14 +51,14 @@ load_dotenv()
 CHROMA_PERSIST_DIR = "./chroma_db"
 EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 AWS_REGION = os.getenv("AWS_REGION", "us-east-1")
-BEDROCK_MODEL_ID = "anthropic.claude-3-5-sonnet-20241022-v2:0"
+BEDROCK_MODEL_ID = "anthropic.claude-3-sonnet-20240229-v1:0"
 
-# Initialize Langfuse callback
-langfuse_handler = CallbackHandler(
-    public_key=os.getenv("LANGFUSE_PUBLIC_KEY"),
-    secret_key=os.getenv("LANGFUSE_SECRET_KEY"),
-    host=os.getenv("LANGFUSE_HOST", "https://cloud.langfuse.com")
-)
+# Debug: Check if Langfuse keys are loaded
+print(f"Debug: LANGFUSE_PUBLIC_KEY loaded? {os.getenv('LANGFUSE_PUBLIC_KEY') is not None}")
+print(f"Debug: LANGFUSE_SECRET_KEY loaded? {os.getenv('LANGFUSE_SECRET_KEY') is not None}")
+
+# Initialize Langfuse client for creating traces
+langfuse_client = Langfuse()
 
 # Initialize LLM Guard Vault for PII redaction
 vault = Vault()
@@ -314,7 +316,7 @@ class GuardrailsManager:
         
         # Output scanners
         self.output_scanners = [
-            Sensitive(redact_mode='all'),  # Redacts PII
+            Sensitive(),  # Redacts PII
             NoRefusal(threshold=0.5),
             Relevance(threshold=0.5)
         ]
@@ -347,19 +349,26 @@ class GuardrailsManager:
         risk_scores = {}
         
         for scanner in self.output_scanners:
-            if scanner.__class__.__name__ == "Relevance" and prompt:
-                result = scanner.scan(prompt, sanitized_output)
-            else:
-                result = scanner.scan(sanitized_output)
-            
-            scanner_name = scanner.__class__.__name__
-            risk_scores[scanner_name] = result
-            
-            if isinstance(result, tuple) and len(result) > 1:
-                sanitized_output = result[0]
-                if not result[1]:  # If scanner flags output as unsafe
-                    is_safe = False
-                    print(f"⚠️  Output flagged by {scanner_name}")
+            try:
+                if scanner.__class__.__name__ == "Relevance" and prompt:
+                    result = scanner.scan(prompt, sanitized_output)
+                elif scanner.__class__.__name__ == "Sensitive":
+                    result = scanner.scan(sanitized_output, "")  # Sensitive needs output and context
+                elif scanner.__class__.__name__ == "NoRefusal":
+                    result = scanner.scan(prompt, sanitized_output)  # NoRefusal needs prompt and output
+                else:
+                    result = scanner.scan(sanitized_output)
+                
+                scanner_name = scanner.__class__.__name__
+                risk_scores[scanner_name] = result
+                
+                if isinstance(result, tuple) and len(result) > 1:
+                    sanitized_output = result[0]
+                    if not result[1]:  # If scanner flags output as unsafe
+                        is_safe = False
+                        print(f"⚠️  Output flagged by {scanner_name}")
+            except Exception as e:
+                print(f"⚠️  Error scanning with {scanner.__class__.__name__}: {e}")
         
         return {
             "is_safe": is_safe,
@@ -419,7 +428,7 @@ def ingest_docs():
     print(f"✅ Created {len(chunks)} chunks from {len(BOFA_DOCUMENTS)} documents")
     
     # Create Chroma vector store
-    from langchain.schema import Document
+    from langchain_core.documents import Document
     chunk_docs = [
         Document(page_content=c["page_content"], metadata=c["metadata"])
         for c in chunks
@@ -496,7 +505,7 @@ def query_pipeline(query: str, vectorstore=None, use_guardrails=True, trace=True
         search_kwargs={"k": 5}
     )
     
-    docs = retriever.get_relevant_documents(query)
+    docs = retriever.invoke(query)
     contexts = [doc.page_content for doc in docs]
     sources = [doc.metadata.get("source", "Unknown") for doc in docs]
     
@@ -541,7 +550,14 @@ Context:
     def format_docs(docs):
         return "\n\n".join([f"[{doc.metadata.get('source', 'Unknown')}]\n{doc.page_content}" for doc in docs])
     
-    callbacks = [langfuse_handler] if trace else []
+    # Create trace for this request
+    trace_url = None
+    callbacks = []
+    langfuse_handler = None
+    if trace:
+        # Create callback handler with no arguments - it reads from env vars
+        langfuse_handler = CallbackHandler()
+        callbacks = [langfuse_handler]
     
     rag_chain = (
         {"context": retriever | format_docs, "question": RunnablePassthrough()}
@@ -553,7 +569,21 @@ Context:
     # Invoke with tracing
     answer = rag_chain.invoke(query, config={"callbacks": callbacks})
     
-    print(f"💬 ANSWER:\n{answer}\n")
+    # Get trace URL after invocation
+    if trace and langfuse_handler:
+        try:
+            # Use last_trace_id to build the trace URL
+            if hasattr(langfuse_handler, 'last_trace_id') and langfuse_handler.last_trace_id:
+                langfuse_host = os.getenv('LANGFUSE_HOST', 'https://cloud.langfuse.com')
+                trace_url = f"{langfuse_host}/trace/{langfuse_handler.last_trace_id}"
+        except Exception as e:
+            print(f"⚠️  Could not get trace URL: {e}")
+            
+        print(f"💬 ANSWER:\n{answer}\n")
+        if trace_url:
+            print(f"🔗 Trace URL: {trace_url}\n")
+    else:
+        print(f"💬 ANSWER:\n{answer}\n")
     
     # Step 4: Output guardrails
     output_scan = None
@@ -563,12 +593,7 @@ Context:
             print("⚠️  Output flagged by guardrails - using sanitized version")
             answer = output_scan["sanitized_output"]
     
-    # Step 5: Get trace URL
-    trace_url = None
-    if trace and langfuse_handler.trace:
-        trace_url = f"{os.getenv('LANGFUSE_HOST', 'https://cloud.langfuse.com')}/trace/{langfuse_handler.trace.id}"
-        print(f"🔗 Trace URL: {trace_url}\n")
-    
+    # Return results (trace_url was set above)
     return {
         "query": query,
         "answer": answer,
