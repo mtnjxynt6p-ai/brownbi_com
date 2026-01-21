@@ -22,7 +22,7 @@ app = FastAPI(
 # Enable CORS for brownbi.com
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allow all origins for local testing
+    allow_origins=["http://localhost:3000"],  # React dev server
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -177,7 +177,7 @@ async def get_stats():
     }
 
 
-# Run with: uvicorn api_server:app --host 127.0.0.1 --port 5000 --reload
+# Run with: uvicorn api_server:app --host 127.0.0.1 --port 5001 --reload
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="127.0.0.1", port=5000)
+    uvicorn.run(app, host="127.0.0.1", port=5001)

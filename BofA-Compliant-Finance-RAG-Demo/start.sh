@@ -55,7 +55,7 @@ echo "=========================================="
 echo ""
 echo "Choose mode:"
 echo "  1) Interactive CLI (default)"
-echo "  2) Web API Server (FastAPI on port 5000)"
+echo "  2) Web API Server (FastAPI on port 5001)"
 echo ""
 read -p "Enter choice [1/2]: " choice
 
@@ -63,10 +63,10 @@ case $choice in
     2)
         echo ""
         echo "🌐 Starting FastAPI server..."
-        echo "   Access Swagger UI at: http://localhost:5000/docs"
-        echo "   Health check: http://localhost:5000/health"
+        echo "   Access Swagger UI at: http://localhost:5001/docs"
+        echo "   Health check: http://localhost:5001/health"
         echo ""
-        python -m uvicorn api_server:app --host 127.0.0.1 --port 5000 --reload
+        python -m uvicorn api_server:app --host 127.0.0.1 --port 5001 --reload
         ;;
     *)
         echo ""

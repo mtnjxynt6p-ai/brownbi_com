@@ -559,11 +559,6 @@ Context:
         langfuse_handler = CallbackHandler()
         callbacks = [langfuse_handler]
     
-    # LCEL RAG chain:
-    # 1) Use the retriever to fetch relevant documents and format them into a context string.
-    # 2) Inject the formatted context and user question into the prompt template.
-    # 3) Send the composed prompt to the Bedrock LLM.
-    # 4) Parse the LLM response into a plain string output.
     rag_chain = (
         {"context": retriever | format_docs, "question": RunnablePassthrough()}
         | prompt_template
