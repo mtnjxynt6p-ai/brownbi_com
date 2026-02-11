@@ -6,7 +6,7 @@ Exposes REST API endpoints for web integration on brownbi.com.
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from typing import Optional
+from typing import Optional, Dict, Any
 import os
 
 # Import core RAG functions
@@ -71,6 +71,8 @@ class QueryResponse(BaseModel):
     sources: list[str]
     trace_url: Optional[str] = None
     guardrails_applied: bool
+    input_guardrails: Optional[Dict[str, Any]] = None
+    output_guardrails: Optional[Dict[str, Any]] = None
 
 
 @app.get("/")
@@ -145,7 +147,9 @@ async def query_rag(request: QueryRequest):
             answer=result["answer"],
             sources=result.get("sources", []),
             trace_url=result.get("trace_url"),
-            guardrails_applied=request.use_guardrails
+            guardrails_applied=request.use_guardrails,
+            input_guardrails=result.get("input_guardrails"),
+            output_guardrails=result.get("output_guardrails")
         )
         
     except Exception as e:

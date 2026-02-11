@@ -332,13 +332,13 @@ class GuardrailsManager:
             scanner_name = scanner.__class__.__name__
             risk_scores[scanner_name] = result
             
-            if not result[0]:  # If scanner flags input as unsafe
+            if not result[1]:  # If scanner flags input as unsafe
                 is_valid = False
                 print(f"⚠️  Input blocked by {scanner_name}: {result[1]}")
         
         return {
             "is_valid": is_valid,
-            "sanitized_prompt": sanitized_prompt,
+            "sanitized_prompt": result[0],
             "risk_scores": risk_scores
         }
     

@@ -12,7 +12,13 @@
 
 ---
 
-## 🚀 Quick Start
+## � Agent Lifecycle
+
+For a detailed breakdown of how a query moves through the system, see [AGENT_LIFECYCLE.md](AGENT_LIFECYCLE.md).
+
+---
+
+## �🚀 Quick Start
 
 ### 1. Install Dependencies
 
