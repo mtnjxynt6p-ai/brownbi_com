@@ -272,7 +272,7 @@ session_start(); // <-- Add this to enable PHP session for CAPTCHA
         </div>
 <div class="row">
 	<div class="col-lg-4 col-md-6 col-sm-12 text-center"></div>
-	<div class="col-lg-4 col-md-6 col-sm-12 text-center"><a href="healthcare-chatbot.php?name=BrownBI User"><img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="images/notesProcessing.svg" title="Ultrasound by Famhmi Hidayat from the Noun Project" data-holder-rendered="true"></a><h3>NoteRisk™ AI</h3>
+	<div class="col-lg-4 col-md-6 col-sm-12 text-center"><a name="noteRisk"><img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="images/notesProcessing.svg" title="Ultrasound by Famhmi Hidayat from the Noun Project" data-holder-rendered="true"></a><h3>NoteRisk™ AI</h3>
 <h2 style="margin-top:80px;">Live Real-Time Analysis (MIMIC-III de-identified notes)</h2>
 <p>Paste any de-identified discharge summary. Watch NoteRisk™ flag risks instantly.</p>
 
