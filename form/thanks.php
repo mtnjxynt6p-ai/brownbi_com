@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="refresh" content="7;url=/" />
-    <title>Thank You - Brown Business Intelligence</title>
+    <title>Thank You - Brown Bioprinting & Imaging</title>
     
     <!-- Bootstrap -->
     <link href="../css/bootstrap-4.4.1.BBI001.css" rel="stylesheet">

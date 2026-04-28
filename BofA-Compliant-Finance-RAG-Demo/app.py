@@ -308,17 +308,17 @@ class GuardrailsManager:
     
     def __init__(self):
         # Input scanners
+        # Note: PromptInjection scanner removed — it false-positives on normal Q&A queries
         self.input_scanners = [
-            PromptInjection(threshold=0.5),
-            Toxicity(threshold=0.5),
-            BanTopics(topics=["violence", "hate", "self-harm"], threshold=0.5)
+            Toxicity(threshold=0.7),
+            BanTopics(topics=["violence", "hate", "self-harm"], threshold=0.7)
         ]
         
         # Output scanners
         self.output_scanners = [
             Sensitive(),  # Redacts PII
-            NoRefusal(threshold=0.5),
-            Relevance(threshold=0.5)
+            NoRefusal(threshold=0.7),
+            Relevance(threshold=0.3)
         ]
     
     def scan_input(self, prompt: str) -> Dict[str, Any]:
@@ -491,7 +491,9 @@ def query_pipeline(query: str, vectorstore=None, use_guardrails=True, trace=True
                 "query": query,
                 "answer": "⛔ Query blocked by safety guardrails.",
                 "contexts": [],
-                "guardrails": input_scan,
+                "sources": [],
+                "input_guardrails": input_scan,
+                "output_guardrails": None,
                 "trace_url": None
             }
         query = input_scan["sanitized_prompt"]

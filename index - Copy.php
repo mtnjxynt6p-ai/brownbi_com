@@ -14,7 +14,7 @@ header("Expires: 0");
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>||-Brown Business Intelligence -||</title>	
+    <title>||-Brown Bioprinting & Imaging -||</title>	
     <script src="js/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/custom.css?dt=<?php echo time();?>" />
     <meta name="msapplication-TileColor" content="#efefef">
@@ -476,7 +476,7 @@ async function runAnalysis() {
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <p>Copyright 2025 © Brown Business Intelligence, LLC. All rights reserved.</p>
+            <p>Copyright 2025 © Brown Bioprinting & Imaging, LLC. All rights reserved.</p>
           </div>
         </div>
           <div class="intercom" id="intercom" ><a href="#" onclick="spawnChat()"><img src="images/iconChat.svg"></a></div>

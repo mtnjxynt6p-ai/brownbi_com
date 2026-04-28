@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>||-Brown Business Intelligence -||</title>
+    <title>||-Brown Bioprinting & Imaging -||</title>
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -202,7 +202,7 @@
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <p>Copyright 2021 © Brown Business Intelligence, LLC. All rights reserved.</p>
+            <p>Copyright 2021 © Brown Bioprinting & Imaging, LLC. All rights reserved.</p>
           </div>
         </div>
       </div>

@@ -4,10 +4,11 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><strong>B</strong>usiness <strong>I</strong>ntelligence for:</a>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><strong>B</strong>ioprinting & <strong>I</strong>maging Solutions:</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-               <a class="dropdown-item" href="/#medici">Medical</a><a class="dropdown-item" href="/#finis">Financial Services</a> <a class="dropdown-item" href="/#energos">Energy</a>
+               <a class="dropdown-item" href="/#medici">Medical Devices</a><a class="dropdown-item" href="/#finis">Precision Prototyping</a> <a class="dropdown-item" href="/#energos">Research & Materials</a>
                 <div class="dropdown-divider">&nbsp;</div>
+			<!--	<a class="dropdown-item" href="/#aboutUs">About Us</a>-->
                 <a class="dropdown-item" href="/#shockUs">Contact Us</a>
             
 <!--              <a class="dropdown-item" href="#">B<sup>2</sup>I Capabilities</a>-->

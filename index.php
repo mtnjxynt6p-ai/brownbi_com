@@ -15,7 +15,7 @@ session_start(); // <-- Add this to enable PHP session for CAPTCHA
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>||-Brown Business Intelligence -||</title>	
+    <title>||-Brown Bioprinting & Imaging -||</title>	
     <script src="js/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/custom.css?dt=<?php echo time();?>" />
     <meta name="msapplication-TileColor" content="#efefef">
@@ -224,11 +224,11 @@ session_start(); // <-- Add this to enable PHP session for CAPTCHA
       <div class="container main-content">
       <div class="col-12" style="padding-top:12em;">
               <h2 class="text-center">
-                    Business Artificial Intelligence</h2>
-              <p>Business Intelligence (BI) comprises the strategies and technologies used by enterprises for the data analysis of business information.<br>
+                    Advanced Additive Manufacturing & 3D Scanning</h2>
+              <p>Bioprinting and 3D Scanning are transformative technologies that enable precise fabrication and digital capture of complex geometries and biological structures.<br>
                 <br>
-                Artificial Intelligence (AI) is intelligence demonstrated by machines, unlike the natural intelligence displayed
-              <p>We are a licensed, insured development shop serving clients in Charlotte North Carolina, and the world.&nbsp; We specialize in generative, and agentic AI using Low Code/No Code environments for prototyping and AWS/Azure to deploy production systems.&nbsp; All employees are US Citizens.&nbsp;🇺🇸 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
+                At Brown Bioprinting & Imaging, we deliver cutting-edge additive manufacturing solutions for medical device development, precision prototyping, and advanced research applications.
+              <p>We are a licensed, insured advanced manufacturing services provider serving clients in Charlotte North Carolina, and the world.&nbsp; We specialize in high-resolution 3D bioprinting, precision scanning, and digital reconstruction using state-of-the-art equipment and proprietary processes for production systems.&nbsp; All employees are US Citizens.&nbsp;🇺🇸 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
 <p>&nbsp;</p>
               <p class="text-center">
                  <a class="btn btn-primary btn-sm" href="#verticals" role="button" id="learnMoreHome">Verticals</a>&nbsp;&nbsp;<a class="btn btn-primary btn-sm" href="#shockUs" role="button" id="contactHome">Contact Us</a>
@@ -244,18 +244,18 @@ session_start(); // <-- Add this to enable PHP session for CAPTCHA
           <div class="col-lg-4 col-md-6 col-sm-12 text-center">
               <a href="#medici">
 <!--            <img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="images/iconUltrasound.svg" title="Created by Iconic from Noun Project" data-holder-rendered="true">-->
-            <h3>Medical</h3></a>
+            <h3>Medical Devices</h3></a>
             <p>&nbsp;</p>
           </div>
             <div class="col-lg-4 col-md-6 col-sm-12 text-center">
                 <a href="#finis">
 <!--            <img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="images/iconFinancialServices.svg" title="from the Noun ProjectCreated by Siipkan Creative" data-holder-rendered="true" >-->
-                    <h3>Financial Services</h3></a>
+                    <h3>Precision Prototyping</h3></a>
             <p>&nbsp;&nbsp;</p>
           </div>
           <div class="col-lg-4 col-md-6 col-sm-12 text-center"><a href="#energos">
 <!--           <img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="images/iconEnergyProducers.svg" title="Created by Vectors Point from the Noun Project" data-holder-rendered="true">-->
-              <h3>Energy<sup></sup></h3></a>
+              <h3>Research & Materials<sup></sup></h3></a>
           </div>
           </div> 
           <div class="row">
@@ -267,108 +267,59 @@ session_start(); // <-- Add this to enable PHP session for CAPTCHA
         <div class="row"><a name="medici"></a>
           <div class="col-12 mb-2 text-center">
                <img class="rounded-circle" alt="140x140" style="width: 70px; height: 70px;" src="images/iconMedici.svg" title="Created by Sergey Demushkin from the Noun Project" data-holder-rendered="true">
-            <h2>Medical  AI&nbsp;</h2>
+            <h2>Medical Devices&nbsp;</h2>
           </div>
         </div>
 <div class="row">
 	<div class="col-lg-4 col-md-6 col-sm-12 text-center"></div>
-	<div class="col-lg-4 col-md-6 col-sm-12 text-center"><a name="noteRisk"><img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="images/notesProcessing.svg" title="Ultrasound by Famhmi Hidayat from the Noun Project" data-holder-rendered="true"></a><h3>NoteRisk™ AI</h3>
-<h2 style="margin-top:80px;">Live Real-Time Analysis (MIMIC-III de-identified notes)</h2>
-<p>Paste any de-identified discharge summary. Watch NoteRisk™ flag risks instantly.</p>
+	<div class="col-lg-4 col-md-6 col-sm-12 text-center"><a name="noteRisk"><img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="images/notesProcessing.svg" title="Bioprinting Services" data-holder-rendered="true"></a><h3>High-Resolution Bioprinting</h3>
+<h2 style="margin-top:80px;">Precision Engineered Biological Structures</h2>
+<p>Utilizing advanced extrusion and inkjet bioprinting technologies to create complex tissue scaffolds and personalized medical devices.</p>
 
 <div style="background-color: rgba(240, 237, 235, 0.75); border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); padding:25px; margin-bottom: 10px;">
-  <textarea id="patientNote" placeholder="Paste de-identified discharge summary here..." style="width:100%;height:200px;font-family:monospace;font-size:14px;padding:12px;border:1px solid #ccc;border-radius:8px;"></textarea>
-  
-  <button onclick="runAnalysis()" style="margin-top:15px;padding:14px 32px;background:#005EB8;color:white;border:none;border-radius:8px;font-weight:bold;font-size:16px;cursor:pointer;">
-    🔬 Run NoteRisk™ Analysis
-  </button>
-  <button onclick="loadSampleNote()" style="margin-top:15px;margin-left:10px;padding:14px 24px;background:#28a745;color:white;border:none;border-radius:8px;font-weight:bold;font-size:14px;cursor:pointer;">
-    📄 Sample Note
-  </button>
-  <p style="margin-top:10px;color:#666;font-size:14px;">Powered by AWS Bedrock • Real-time • No data stored</p>
+  <p><strong>Our Medical Device Services Include:</strong></p>
+  <ul style="text-align: left; display: inline-block;">
+    <li>Customized implant design and fabrication</li>
+    <li>Biocompatible scaffold development</li>
+    <li>Tissue engineering support</li>
+    <li>Regulatory compliance documentation</li>
+    <li>Small batch to pilot production runs</li>
+  </ul>
+  <p style="margin-top:15px;"><a href="#shockUs" style="background:#005EB8;color:white;padding:12px 24px;text-decoration:none;border-radius:8px;font-weight:bold;">Request a Quote →</a></p>
 </div>
-
-<div id="analysisResult" style="margin-top:30px;padding:25px;background:#fff;border:2px solid #005EB8;border-radius:12px;display:none;">
-  <h3 style="margin-top:0;color:#005EB8;">Risk Flags Detected:</h3>
-  <div id="flags"></div>
-  <hr>
-  <p><strong>Pilot Value:</strong> Your hospital could catch these before discharge. $5,000 • 4 weeks • Full refund if no value.</p>
-  <a href="#shockUs" style="background:#005EB8;color:white;padding:12px 24px;text-decoration:none;border-radius:8px;font-weight:bold;">Book $5k Pilot →</a>
-</div>
-
-<script>
-async function runAnalysis() {
-  const note = document.getElementById("patientNote").value.trim();
-  if (!note) {
-    alert("Paste a discharge summary first");
-    return;
-  }
-
-  document.getElementById("analysisResult").style.display = "block";
-  document.getElementById("flags").innerHTML = "<p>Analyzing with AWS Bedrock...</p>";
-
-  const response = await fetch('api/bedrock.php', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ 
-      message: "Analyze this de-identified discharge summary and return ONLY valid JSON with these exact keys: sepsis_risk (High/Medium/Low), readmission_risk (percentage), mortality_risk (High/Medium/Low), social_determinants (array), care_gaps (array). No extra text. Note: " + note 
-    })
-  });
-
-  const data = await response.json();
-  const text = data.content?.[0]?.text || "No response";
-
-  try {
-    const result = JSON.parse(text);
-    let html = "";
-    if (result.sepsis_risk) html += `<p>🔴 <strong>Sepsis Risk:</strong> ${result.sepsis_risk}</p>`;
-    if (result.readmission_risk) html += `<p>🟡 <strong>Readmission Risk:</strong> ${result.readmission_risk}</p>`;
-    if (result.mortality_risk) html += `<p>🔴 <strong>Mortality Risk:</strong> ${result.mortality_risk}</p>`;
-    if (result.social_determinants?.length) html += `<p>🟠 <strong>Social Determinants:</strong> ${result.social_determinants.join(", ")}</p>`;
-    if (result.care_gaps?.length) html += `<p>⚠️ <strong>Care Gaps:</strong> ${result.care_gaps.join(", ")}</p>`;
-    document.getElementById("flags").innerHTML = html || "<p>No risks flagged</p>";
-  } catch (e) {
-    document.getElementById("flags").innerHTML = `<p><strong>Raw response:</strong> ${text}</p>`;
-  }
-}
-
-function loadSampleNote() {
-  document.getElementById("patientNote").value = 'Patient is a 65-year-old male with history of diabetes and hypertension. Admitted with shortness of breath and fever. Labs show elevated WBC, creatinine 2.1. Chest X-ray shows bilateral infiltrates. Started on IV antibiotics for pneumonia. Discharged with oral antibiotics and follow-up in 1 week.';
-}
-</script>
 	</div>
 		<div class="col-lg-4 col-md-6 col-sm-12 text-center"></div>
 		  </div>
 <div class="row">
           <div class="col-lg-4 col-md-6 col-sm-12 text-center">
-            <img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="images/iconUltrasound.svg" title="Ultrasound by Gan Khoon Lay from the Noun Project" data-holder-rendered="true" >
-            <h3>SubQ<sup>&reg;</sup> Selfies</h3>
-            <p>SubQ<sup>&reg;</sup> Selfies (SQS) allow anyone to create and manage a library of personal imagery. </p>
+            <img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="images/iconUltrasound.svg" title="3D Scanning" data-holder-rendered="true" >
+            <h3>3D Scanning Services</h3>
+            <p>High-fidelity capture of physical objects into digital CAD models. Ideal for reverse engineering and design documentation.</p>
           </div>
           <div class="col-lg-4 col-md-6 col-sm-12 text-center">
-            <img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="images/iconCloudUpload.svg" title="Created by Iconic from the Noun Project" data-holder-rendered="true">
-            <h3>Persona  Cloud</h3>
-            <p>Persona Cloud archives your self-made images in our Azure Cloud library for analysis using Persona AI.</p>
+            <img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="images/iconCloudUpload.svg" title="Digital Archive" data-holder-rendered="true">
+            <h3>Digital Archive</h3>
+            <p>Secure cloud storage and version control of all scan data, CAD models, and build files with full compliance documentation.</p>
           </div>
           <div class="col-lg-4 col-md-6 col-sm-12 text-center">
-            <img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="images/iconAI.svg" title="Artificial Intelligence by Martin Markstein from the Noun Project" data-holder-rendered="true">
-            <h3>Persona AI <sup>&reg;</sup></h3>
-            <p>Persona AI <sup>&reg;</sup> is trained on professionally curated imagery, and uses QnA responses to provide you with the world's most advanced analysis.</p>
+            <img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="images/iconAI.svg" title="Design Optimization" data-holder-rendered="true">
+            <h3>Design Optimization</h3>
+            <p>Advanced computational analysis to optimize part geometry, material efficiency, and printability before production.</p>
           </div>
           <div class="col-lg-4 col-md-6 col-sm-12 text-center">
-            <img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="images/iconFormvana.svg" title="customer care by ProSymbols from the Noun Project" data-holder-rendered="true">
-            <h3>Formvana <sup>&reg;</sup></h3>
-            <p>To step further in your personal health journey and engage medical personnel, Formvana generates the correct documentation for medical professionals and insurers.</p>
+            <img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="images/iconFormvana.svg" title="Quality Control" data-holder-rendered="true">
+            <h3>Quality Control & Testing</h3>
+            <p>Post-print inspection, dimensional verification, and material testing to ensure specifications are met.</p>
           </div>
           <div class="col-lg-4 col-md-6 col-sm-12 text-center">
-            <img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="images/iconPersonaLP.svg" title="customer care by ProSymbols from the Noun Project" data-holder-rendered="true">
-            <h3>Persona LP<sup>&reg;</sup></h3>
-            <p>Persona LP<sup>&reg;</sup> helps you choose, and provides a warm hand-off to the provider of your choice.</p>
+            <img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="images/iconPersonaLP.svg" title="Regulatory Support" data-holder-rendered="true">
+            <h3>Regulatory Support</h3>
+            <p>Full documentation packages and FDA/CE compliance support for medical device submissions and certifications.</p>
           </div>
           <div class="col-lg-4 col-md-6 col-sm-12 text-center">
-            <img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="images/iconPersonaMD.svg" title="Doctor by Wilson Joseph from the Noun Project" data-holder-rendered="true">
-            <h3>Persona MD <sup>&reg;</sup></h3>
-            <p>Persona MD <sup>&reg;</sup> is a back office portal for medical personnel of your choosing to access your SubQ imagery.</p>
+            <img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="images/iconPersonaMD.svg" title="Consultation" data-holder-rendered="true">
+            <h3>Expert Consultation</h3>
+            <p>Direct collaboration with our manufacturing engineers to solve complex design and production challenges.</p>
           </div>
         </div>
       </div>
@@ -377,23 +328,23 @@ function loadSampleNote() {
     <div class="container">
         <div class="row"><a name="finis"></a>
           <div class="col-12 mb-2 text-center">
-            <img class="rounded-circle" alt="140x140" style="width: 70px; height: 70px;" src="images/iconFinancialServices.svg" title="from the Noun ProjectCreated by Siipkan Creative" data-holder-rendered="true">
-            <h2>Financial Services AI</h2>
+            <img class="rounded-circle" alt="140x140" style="width: 70px; height: 70px;" src="images/iconFinancialServices.svg" title="Precision Prototyping" data-holder-rendered="true">
+            <h2>Precision Prototyping</h2>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6 col-lg-4">
-            <h3>Generative &amp; Agentic AI Development</h3>
-            <p> Architecting and deploying AI-driven applications, including chatbots, virtual assistants, and automated content generation systems using Kore.ai, Claude Sonnet, and Grok 3.</p>
+            <h3>Rapid Prototyping</h3>
+            <p>Fast turnaround from concept to physical prototype. Iterate quickly on product designs using multiple materials and printing technologies to find optimal solutions.</p>
             <p>&nbsp;</p>
           </div>
           <div class="col-sm-6 col-lg-4">
-            <h3>Contact Center Automation</h3>
-            <p> Designing AI solutions to enhance customer experience, prioritize high-purchase-intent messaging, and improve operational efficiency using MindStudio, AWS, your existing web UX, plus MS Teams and Slack.</p>
+            <h3>Complex Geometry Production</h3>
+            <p>Manufacture intricate internal structures and geometries impossible with traditional manufacturing. Perfect for aerospace, automotive, and industrial applications requiring lightweight, high-strength components.</p>
           </div>
           <div class="col-sm-6 col-lg-4">
-            <h3>Digital Media Automation Agents </h3>
-            <p>Products enhanced with Retrieval-Augmented Generation (RAG), to streamline blogs, social media posts, and podcasts for high-value customers, retrieving trending  data and audience preferences to generate highly engaging, contextually relevant content.</p>
+            <h3>Multi-Material Assembly</h3>
+            <p>Combine different materials in single print jobs to create assemblies with varying properties and integrated functional elements.</p>
           </div>
         </div>
       </div>
@@ -402,19 +353,19 @@ function loadSampleNote() {
         <div class="container">
         <div class="row"><a name="energos"></a>
           <div class="col-12 mb-2 text-center">
-           <img class="rounded-circle" alt="140x140" style="width: 70px; height: 70px;" src="images/iconEnergyProducers.svg" title="Created by Vectors Point from the Noun Project" data-holder-rendered="true">
-            <h2>Energy Services</h2>
+           <img class="rounded-circle" alt="140x140" style="width: 70px; height: 70px;" src="images/iconEnergyProducers.svg" title="Research & Materials" data-holder-rendered="true">
+            <h2>Research & Materials</h2>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6 col-lg-6">
-            <h3>Generative &amp; Agentic AI Development</h3>
-            <p> Architecting and deploying AI-driven applications, including chatbots, virtual assistants, and automated content generation systems using Kore.ai, Claude Sonnet, and Grok 3.</p>
+            <h3>Materials Research & Development</h3>
+            <p>Collaborate on developing and validating new bioink formulations, scaffolding materials, and composite systems. Small batch production for testing and optimization of novel materials.</p>
 <!--            <p><a class="btn btn-link" href="https://www.adobe.com">View details »</a></p>-->
           </div>
           <div class="col-sm-6 col-lg-6">
-            <h3>Contact Center Automation </h3>
-            <p> Designing AI solutions to enhance customer experience, prioritize high-purchase-intent messaging, and improve operational efficiency using MindStudio, AWS, your existing web UX, plus MS Teams and Slack.</p>
+            <h3>Academic & Institutional Partnerships</h3>
+            <p>Support research institutions with production capabilities, equipment access, and technical expertise for groundbreaking projects in regenerative medicine and advanced manufacturing.</p>
 <!--            <p><a class="btn btn-link" href="https://www.adobe.com">View details »</a></p>-->
           </div>
 <!--
@@ -426,7 +377,7 @@ function loadSampleNote() {
 -->
         </div>
       </div>
-    
+
     </section>
     
     <div class="container" style="position: relative; z-index: 10; padding: 0; margin: 0 auto;">
@@ -461,7 +412,7 @@ function loadSampleNote() {
                     <!--/BotPrevention-->
                   <div class="form-group">
                     <label for="msg">Message <span class="text-danger">*</span></label>
-                    <textarea name="msg" cols="100" rows="6" required="required" class="form-control" id="msg" placeholder="Tell us about your healthcare AI needs..." aria-describedby="messageHelp" minlength="10" maxlength="1000"></textarea>
+                    <textarea name="msg" cols="100" rows="6" required="required" class="form-control" id="msg" placeholder="Tell us about your bioprinting and 3D scanning needs..." aria-describedby="messageHelp" minlength="10" maxlength="1000"></textarea>
                     <span id="messageHelp" class="form-text" style="display: none;">Please enter a message.</span>
                     <small class="form-text text-muted" style="display: block; margin-top: 5px;">Minimum 10 characters</small>
                   </div>
@@ -500,7 +451,7 @@ function loadSampleNote() {
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <p>Copyright 2025 © Brown Business Intelligence, LLC. All rights reserved.</p>
+            <p>Copyright 2026 © Brown Bioprinting & Imaging, LLC. All rights reserved.</p>
           </div>
         </div>
           <div class="intercom" id="intercom" ><a href="#" onclick="spawnChat()"><img src="images/iconChat.svg"></a></div>
